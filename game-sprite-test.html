@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+  <style type='text/css'>
+    body { background-color:#ccc; font-family:Tahoma; font-size:11px; }
+
+#container { width:500px; height:500px; background-color:#000; position:relative;}
+#dot { position:relative; height:100px; width:100px; background-color:black; top:0; left:0; -webkit-transform:rotate(0deg); background-image:url('http://webpierre.pagesperso-orange.fr/PluginGuides/imgs/ida-frigate.jpg'); background-repeat:no-repeat; background-position:0 0; top:250px; left:250px; }
+p { color:#fff; position:absolute; bottom: 20px; left:20px; }
+  </style>
+
+
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+$(function(){
+    console.clear();
+    var currentAngle = 0;
+    var spriteDistance = 5.625;
+    var speed = 5.5;
+window.addEventListener('keydown', function(event) {
+
+  var bg = $('#dot').css('background-position').replace('px','').split(' ');
+  var vectorY = Math.sin((currentAngle + 90) * Math.PI / 180) * speed;
+  var vectorX = Math.cos((currentAngle + 90) * Math.PI / 180) * speed;
+
+  switch (event.keyCode) {
+    case 37: // Left
+          currentAngle -= spriteDistance;
+          if ( currentAngle == 360 ) currentAngle = 0;
+          if ( currentAngle < 0 ) currentAngle = 360;
+
+          var heading = currentAngle / spriteDistance;
+          var spriteX = Math.floor(heading / 8) * -100;
+          var spriteY = (heading % 8) * -100;
+          if ( spriteX < -700 ) spriteX = 0;
+          if ( spriteY < -700 ) spriteY = 0;
+          $('#dot').css({ 'backgroundPosition' : spriteY + 'px' + ' ' + spriteX + 'px' });
+    break;
+
+    case 38: // Up
+
+         $('#dot').css({ 'top' : '-=' + vectorY + 'px'})
+         $('#dot').css({ 'left' : '-=' + vectorX + 'px' })
+
+    break;
+
+    case 39: // Right
+          currentAngle += spriteDistance;
+          if ( currentAngle == 360 ) currentAngle = 0;
+          if ( currentAngle < 0 ) currentAngle = 360;
+
+          var heading = currentAngle / spriteDistance;
+          var spriteX = Math.floor(heading / 8) * -100;
+          var spriteY = (heading % 8) * -100;
+
+          if ( spriteX < -700 ) spriteX = 0;
+          if ( spriteY < -700 ) spriteY = 0;
+          $('#dot').css({ 'backgroundPosition' : spriteY + 'px' + ' ' + spriteX + 'px' });
+
+
+    break;
+
+    case 40: // Down
+         $('#dot').css({ 'top' : '+=' + vectorY + 'px'})
+         $('#dot').css({ 'left' : '+=' + vectorX + 'px' })
+    break;
+  }
+    event.preventDefault();
+}, false);
+
+});
+
+
+
+
+
+
+
+});//]]>
+
+</script>
+
+
+</head>
+<body>
+  <div id="container">
+
+    <div id="dot">
+    </div>
+    <p>Use arrow keys to move around.</p>
+</div>
+
+</body>
+
+
+</html>
+
