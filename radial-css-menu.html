@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
+
+  <style type='text/css'>
+  * { -webkit-transition:all ease-out .3s; }
+  body { background-color:#222; color:#fff; border-color:#fff; font-family:Arial; }
+
+  .start {  box-shadow:0 0 15px #000; border-radius:50%; text-align:center; width:100px; height:100px; line-height:100px; cursor:pointer; position:relative; top:50%; left:50%; margin-left:-100px; z-index:10;
+    background: url('http://clanorb.com/images/neworbdemo.jpg') no-repeat center center;
+    background-size: 100px 100px;
+    font-weight:bold;
+    text-shadow:1px 0 3px #000, -1px 0 3px #000;
+    border:1px solid #000;
+  }
+  .start:hover {
+    box-shadow:0 0 15px #ccc, 0 0 10px 5px #000 inset;
+    color:#6CF;
+    text-shadow:0 0 3px 3px #000;
+  }
+
+  .zoomedIn {
+          -webkit-transform:scale(.9);
+      opacity:0;
+      -webkit-filter: blur(1px);
+  }
+
+  .zoomedOut {
+      -webkit-transform:scale(2);
+      opacity:.01;
+      -webkit-filter: blur(1px);
+  }
+
+  .cont {
+  width:500px;
+      height:500px;
+      position:relative;
+  }
+
+  .circle-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    list-style: none;
+    box-sizing: border-box;
+    border: solid 2px;
+      box-shadow:0 0 10px #fff, 0 0 10px #fff inset;
+      margin:50px;
+  }
+  .circle-container > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height:50px;
+      -webkit-transition:all ease-out .6s;
+    margin: -25px;
+      text-align:center;
+      line-height:50px;
+      border-radius: 50%;
+    box-shadow: 0 0 10px #fff;
+      background:#333;
+  }
+  .circle-container > *:nth-of-type(1) { -webkit-transform: rotate(0deg) translate(9.5em) rotate(-0deg);}
+  .circle-container > *:nth-of-type(2) { -webkit-transform: rotate(45deg) translate(9.5em) rotate(-45deg);}
+  .circle-container > *:nth-of-type(3) { -webkit-transform: rotate(90deg) translate(9.5em) rotate(-90deg);}
+  .circle-container > *:nth-of-type(4) { -webkit-transform: rotate(135deg) translate(9.5em) rotate(-135deg);}
+  .circle-container > *:nth-of-type(5) { -webkit-transform: rotate(180deg) translate(9.5em) rotate(-180deg);}
+  .circle-container > *:nth-of-type(6) { -webkit-transform: rotate(225deg) translate(9.5em) rotate(-225deg);}
+  .circle-container > *:nth-of-type(7) { -webkit-transform: rotate(270deg) translate(9.5em) rotate(-270deg);}
+  .circle-container > *:nth-of-type(8) { -webkit-transform: rotate(315deg) translate(9.5em) rotate(-315deg);}
+
+  .zoomedIn li { -webkit-transform: none !important;     -webkit-transition:all ease-out .6s;  }
+
+  .circle-container a {
+    display: block;
+    color:#fff;
+  }
+
+  .circle-container li:hover {
+   box-shadow:0 0 20px lightgreen;
+  }
+
+
+  </style>
+
+
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+$(function(){
+    $('.start').click(function(){
+       $(this).addClass('zoomedOut');
+        $('.circle-container').removeClass('zoomedIn');
+    });
+    $('.circle-container a').click(function(){
+       $('.start').removeClass('zoomedOut');
+        $('.circle-container').addClass('zoomedIn');
+    });
+});
+});//]]>
+
+</script>
+
+
+</head>
+<body>
+  <div class="cont"><div class="start">Click</div>
+    <ul class="circle-container zoomedIn">
+      <li class=""><a href="#">Test</a></li>
+      <li class=""><a href="#">Test</a></li>
+      <li class=""><a href="#">Test</a></li>
+      <li class=""><a href="#">Test</a></li>
+      <li class=""><a href="#">Test</a></li>
+      <li class=""><a href="#">Test</a></li>
+      <li class=""><a href="#">Test</a></li>
+      <li class=""><a href="#">Test</a></li>
+    </ul>
+</div>
+
+</body>
+
+
+</html>
+
